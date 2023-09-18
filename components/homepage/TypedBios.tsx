@@ -48,7 +48,7 @@ export function TypedBios() {
             <Twemoji emoji="soccer-ball" />,
             <Twemoji emoji="man-swimming" />,
             <Twemoji emoji="ping-pong" />,
-            <Twemoji emoji="volleyball" />
+            {/* <Twemoji emoji="volleyball" /> */}
           </span>
         </li>
         <li>{tr.t('bio_12')}</li>
