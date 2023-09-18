@@ -1,23 +1,13 @@
 import type { siteMetadata } from '~/data/siteMetadata'
 
-export interface Project {
-  type: 'work' | 'self'
+export interface Project_g {
+  type: 'work' | 'self' | 'indonesia'
   title: string
   description?: string
   imgSrc: string
   url?: string
   repo?: string
   builtWith: string[]
-}
-
-export interface Project_g {
-  type: 'work' | 'self' | 'indonesia'
-  title: string
-  // description?: string
-  imgSrc: string
-  // url?: string
-  // repo?: string
-  // builtWith: string[]
 }
 
 export type SiteMetaData = typeof siteMetadata & {
