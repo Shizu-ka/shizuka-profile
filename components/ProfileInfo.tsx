@@ -15,24 +15,24 @@ export function ProfileCardInfo() {
         <div className="flex items-center text-gray-700 dark:text-gray-200">
           <Backpack strokeWidth={1} size={20} />
           <p className="flex items-center px-2 space-x-1">
-            <span>CTO & Co-Founder</span>
+            <span>Student</span>
             <span>@</span>
             <a
               target="_blank"
-              href="https://weaverse.io"
+              href="https://ub.ac.id"
               rel="noreferrer"
               className="hover:underline"
             >
-              Weaverse
+              Brawijaya
             </a>
           </p>
         </div>
         <div className="flex items-center text-gray-700 dark:text-gray-200">
           <MapPin strokeWidth={1} size={20} />
           <p className="px-2">
-            [::1]:443 - Ha Noi,
+            [::1]:443 - Jakarta,
             <span className="absolute ml-1 inline-flex pt-px">
-              <Twemoji emoji="flag-vietnam" />
+              <Twemoji emoji="flag-indonesia" />
             </span>
           </p>
         </div>
