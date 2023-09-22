@@ -18,14 +18,96 @@ import UnsplashPhotoInfo from './UnsplashPhotoInfo.tsx'
 A perceptron is a basic linear classifier used in machine learning. 
 It takes input features, applies weights and a bias term, computes a sum, and passes it through an activation function to produce an output. 
 The perceptron adjusts its weights and bias during training based on classification errors. It is limited to learning linearly separable patterns.
+This time, we will try to apply perceptron algorithm using iris dataset.
 
-![render-blocking-css](/static/images/render-blocking-css.png)
-<div style={{ textAlign: 'center', marginTop: '-16px' }}>
-  <small>CSS greatly affects page load time</small>
-</div>
-<br />
+Before we jump to preprocessing, training and testing, we need to make some perceptron function first.
 
-First of all, we need to load iris dataset.
+`1. Step Perceptronn`
+```python
+def percep_step(input, th=0):
+  return 1 if input > th else -1 if input < -th else 0
+```
+
+`2. Training Perceptron`
+```python
+def percep_fit(X, target, th=0, a=0.01, max_epoch=-1, verbose=False,draw=False):
+  w = np.zeros(len(X[0]) + 1)
+  bias = np.ones((len(X), 1))
+  X = np.hstack((bias, X))
+  stop = False
+  epoch = 0
+
+  while not stop and (max_epoch == -1 or epoch < max_epoch):
+      stop = True
+      epoch += 1
+
+      if verbose:
+        print('\nEpoch', epoch)
+
+      for r, row in enumerate(X):
+        y_in = np.dot(row, w)
+        y = percep_step(y_in, th)
+
+        if y != target[r]:
+          stop = False
+          w = [w[i] + a * target[r] * row[i] for i in range(len(row))]
+        if verbose:
+          print('Weight:', w)
+        if draw:
+          plot(line(w, th), line(w, -th), X, target)
+
+  return w, epoch
+```
+
+`3. Testing Perceptron`
+```python
+def percep_predict(X, w, th=0):
+  Y = []
+  for x in X:
+    y_in = w[0] + np.dot(x, w[1:])
+    y = percep_step(y_in, th)
+    Y.append(y)
+  return Y
+```
+
+`4. Calculate Accuracy`
+```python
+def calc_accuracy(a, b):
+  s = [1 if a[i] == b[i] else 0 for i in range(len(a))]
+  return sum(s) / len(a)
+```
+
+`5. Plotting Function`
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+def line(w, th=0):
+    w2 = w[2] + .001 if w[2] == 0 else w[2]
+
+    return lambda x: (th - w[1] * x - w[0]) / w2
+
+
+def plot(f1, f2, X, target, padding=1, marker='o'):
+    X = np.array(X)
+
+    x_vals, y_vals = X[:, 1], X[:, 2]
+    xmin, xmax, ymin, ymax = x_vals.min(), x_vals.max(), y_vals.min(), y_vals.max()
+    markers = f'r{marker}', f'b{marker}'
+    line_x = np.arange(xmin-padding-1, xmax+padding+1)
+
+    for c, v in enumerate(np.unique(target)):
+        p = X[np.where(target == v)]
+
+        plt.plot(p[:,1], p[:,2], markers[c])
+
+    plt.axis([xmin-padding, xmax+padding, ymin-padding, ymax+padding])
+    plt.plot(line_x, f1(line_x))
+    plt.plot(line_x, f2(line_x))
+    plt.show()
+```
+
+`After the preparation`, we finally can to start to process the dataset. First, need to load iris dataset.
 
 ```python
 import seaborn as sns
@@ -37,95 +119,71 @@ sns.pairplot(iris, hue='species')
 plt.show()
 ```
 
-What would you choose to run them?
+Because perceptron only has **Bipolar** target (the target can only 1 or -1), then we need to drop other column and leaving 2 column. 
+In this case, we will delete **Virginica**.
 
-Awaiting each promise one by one:
+```python
+iris = iris.loc[iris['species'] != 'virginica']
 
-```javascript
-await promise1()
-await promise2()
-await promise3()
-// do other stuff
+sns.pairplot(iris, hue='species')
+plt.show()
 ```
 
-Or run them all at once:
+![render-blocking-css](/static/images/blog-iris/delete-virginica.png)
+<div style={{ textAlign: 'center', marginTop: '-16px' }}>
+  <small>Distribution of the sentosa and versicolor classes</small>
+</div>
+<br />
 
-```javascript
-await Promise.all([promise1(), promise2(), promise3()])
-// do other stuff
+As mentioned above, that perceptron target is only bipolar. But this case is only applied to target/classes. You can have as many features as you want.
+But in this case, we will delete 
+**sepal_width** and **petal_width**.
+
+```python
+iris = iris.drop(['sepal_width', 'petal_width'], axis=1)
+
+sns.pairplot(iris, hue='species')
+plt.show()
 ```
+![render-blocking-css](/static/images/blog-iris/delete-features.png)
+<div style={{ textAlign: 'center', marginTop: '-16px' }}>
+  <small>CSS greatly affects page load time</small>
+</div>
+<br />
 
-The first approach is running them **sequentially**, one after another. It means that the next promise will start only after the previous one is resolved.
+As you can see from the picture above, the two classes are perfectly separated. This is good sign since its for practice purpose only.
+The next thing we will do is testing and training. 
 
-Like this:
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import minmax_scale
 
-```javascript
-promise1().then(() => {
-  promise2().then(() => {
-    promise3().then(() => {
-      // do other stuff
-    })
-  })
-})
+X = iris[['sepal_length', 'petal_length', 'sepal_width','petal_width']].to_numpy()
+X = minmax_scale(X)
+
+y = iris['species'].to_numpy()
+c = {'setosa': -1, 'versicolor': 1}
+y = [c[i] for i in y]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.3)
+w, epoch = percep_fit(X_train, y_train, verbose=True, draw=True)
+out = percep_predict(X_test, w)
+accuracy = calc_accuracy(out, y_test)
+
+print('Epochs:', epoch)
+print('Accuracy:', accuracy)
 ```
+![render-blocking-css](/static/images/blog-iris/final-train.png)
+<div style={{ textAlign: 'center', marginTop: '-16px' }}>
+  <small>Final train with accuracy 1</small>
+</div>
+<br />
 
-The second approach is well-known as running them in **"parallel"**, meaning that all promises will start at the same time.
-It's useful when you don't need to wait for the previous promise to be resolved before starting the next one.
-
-But does it really run in parallel (or all at once)? <Twemoji emoji="thinking-face" />
-
-The answer is no. JavaScript is single-threaded programming language, so it can't run multiple things at the exact same time (except for some circumstances such as [web workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers).)
-`Promise.all()` actually runs them concurrently, not in parallel!
-
-What's the difference?
-
-## Concurrent programming vs Parallel programming
-
-> TL;DR: Concurrent programming is about dealing with a lot of things at once, while parallel programming is about doing a lot of things at once.
-
-See also this excellent explanation from [Haskell wiki](https://wiki.haskell.org/Parallelism_vs._Concurrency).
-
-A dead-simple example for a 9-year-old kid:
-
-- **Concurrency**: 2 lines of customers ordering food from a single cashier (lines take turns ordering).
-- **Parallelism**: 2 lines of customers ordering food at the same time from 2 cashiers.
-
-As so, what `Promise.all()` does is, it adds the promises to an event loop queue and calls them all together.
-But it waits for each one to resolve before moving on.
-`Promise.all` will stop if the first promise rejects, unless you handle the error yourself (e.g. with `.catch()`).
-
-That's the major difference between concurrent and parallel, with _concurrent execution_, promises run one after another but don't have to wait for previous ones to end. They make progress at the same time.
-In contrast, _parallel execution_ runs promises at the exact same time in separate processes.
-This allows them to progress completely separately at their own speed.
-
-## Conclusion
-
-The answer for the question in the title is: `Promise.all()` runs concurrently, all promises execute almost at the same time, but not in parallel.
-
-If you have a list promises that don't depend on each other, you can run them concurrently (or parallel-like):
-
-```javascript
-await Promise.all([promise1(), promise2(), promise3()])
-// or
-await Promise.all(
-  items.map(async (item) => {
-    await doSomething(item)
-  })
-)
-```
-
-Or sequentially:
-
-```javascript
-for (let item of items) {
-  await doSomething(item)
-}
-```
+From the image above, we can see that our model can accurately predict the classes of iris. This is proven by looking at the line in the picture above. 
+The line is called **decision boundaries**. The reason we have 100% accuracy is because the line manages to separate the red and blue dots perfectly
 
 ## References
 
-- [`Promise.all()` documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all)
-- [Parallelism vs. Concurrency](https://wiki.haskell.org/Parallelism_vs._Concurrency)
-- [JavaScript Event Loop structure](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
+- [Implementing Perceptron with Python](https://pyimagesearch.com/2021/05/06/implementing-the-perceptron-neural-network-with-python/)
 
-Happy promise-ing! <Twemoji emoji="clinking-beer-mugs" />
+Happy DLearn-ing! <Twemoji emoji="clinking-beer-mugs" />
