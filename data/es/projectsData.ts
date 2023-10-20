@@ -2,7 +2,7 @@ import type { Project } from '~/types/data'
 
 export let projectsData: Project[] = [
   {
-    type: 'work',
+    type: 'school',
     title: 'Weaverse - Constructor de sitios web universal',
     description: `El primer constructor de sitios web promovido por Hydrogen y potenciado por IA. Weaverse es un canal de ventas de Shopify que te permite crear un sitio web en minutos sin necesidad de programación.`,
     imgSrc: '/static/images/weaverse-hydrogen.jpg',
@@ -10,7 +10,7 @@ export let projectsData: Project[] = [
     builtWith: ['Remix', 'Prisma', 'Tailwind', 'OpenAI'],
   },
   {
-    type: 'work',
+    type: 'school',
     title: 'Pilot - Tema Hydrogen para Shopify',
     description:
       'El primer tema impulsado por Hydrogen para Shopify. Pilot es un tema de Shopify que te permite construir una tienda virtual extremadamente rápida con todas las ventajas de Hydrogen.',
@@ -20,7 +20,7 @@ export let projectsData: Project[] = [
     builtWith: ['Hydrogen', 'Remix', 'Tailwind', 'Headless UI'],
   },
   {
-    type: 'work',
+    type: 'school',
     title: 'Minimog - Tema para Shopify',
     description: `La próxima generación del tema Shopify con mayor conversión y extensibilidad (mejor vendido semanalmente y tendencia top en la categoría eCommerce de Themeforest).`,
     imgSrc: '/static/images/minimog.jpg',
@@ -28,7 +28,7 @@ export let projectsData: Project[] = [
     builtWith: ['Theme-kit', 'Liquid', 'Webpack', 'Tailwind'],
   },
   {
-    type: 'work',
+    type: 'school',
     title: 'Fox Kit - Aplicación para Shopify',
     description: `Las herramientas de upselling y potenciación de conversiones construidas para apoyar el tema Minimog.`,
     imgSrc: '/static/images/foxkit.jpg',
