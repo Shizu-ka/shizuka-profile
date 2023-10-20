@@ -74,7 +74,7 @@ export function ProfileCardInfo() {
             className="hover:underline text-sm flex items-center"
             data-umami-event="profile-card-x"
           >
-            <XIcon className="h-4 w-4" fill="#fff" viewBox="0 0 1200 1227" />
+            <XIcon className="h-4 w-4" fill="#fff" viewBox="1200 1227" />
             <span className="ml-px text-gray-500">/</span>
             <span className="ml-0.5">{siteMetadata.socialAccounts.x}</span>
           </a>
