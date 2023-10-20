@@ -320,40 +320,13 @@ plt.show()
 
 ![render-blocking-css](/static/images/blog-weather/treeBranches.png)
 <div style={{ textAlign: 'center', marginTop: '-16px' }}>
-  <small>CSS greatly affects page load time</small>
+  <small>Decision Tree Structure</small>
 </div>
 <br />
 
-As you can see from the picture above, the two classes are perfectly separated. This is good sign since its for practice purpose only.
-The next thing we will do is testing and training. 
+As you can see from the picture above, **RISK_MM** plays the most important role
+to **decide** wether its rain or not tomorrow.
 
-```python
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import minmax_scale
-
-X = iris[['sepal_length', 'petal_length', 'sepal_width','petal_width']].to_numpy()
-X = minmax_scale(X)
-
-y = iris['species'].to_numpy()
-c = {'setosa': -1, 'versicolor': 1}
-y = [c[i] for i in y]
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.3)
-w, epoch = percep_fit(X_train, y_train, verbose=True, draw=True)
-out = percep_predict(X_test, w)
-accuracy = calc_accuracy(out, y_test)
-
-print('Epochs:', epoch)
-print('Accuracy:', accuracy)
-```
-![render-blocking-css](/static/images/blog-iris/final-train.png)
-<div style={{ textAlign: 'center', marginTop: '-16px' }}>
-  <small>Final train with accuracy 1</small>
-</div>
-<br />
-
-From the image above, we can see that our model can accurately predict the classes of iris. This is proven by looking at the line in the picture above. 
-The line is called **decision boundaries**. The reason we have 100% accuracy is because the line manages to separate the red and blue dots perfectly
 
 ## References
 
