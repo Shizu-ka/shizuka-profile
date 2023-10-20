@@ -17,7 +17,7 @@ export async function getStaticProps({ locale }) {
 }
 
 export default function Projects({ projectsData }: { projectsData: Project[] }) {
-  let workProjects = projectsData.filter(({ type }) => type === 'work')
+  let workProjects = projectsData.filter(({ type }) => type === 'school')
   let sideProjects = projectsData.filter(({ type }) => type === 'self')
   let { t } = useTranslation('common')
 
