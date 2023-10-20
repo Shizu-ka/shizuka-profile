@@ -9,7 +9,7 @@ export let siteMetadata = {
   x: 'https://instagram.com/yosiatp_',
   facebook: 'https://facebook.com/elonmusk',
   youtube: 'https://www.youtube.com/elonmusk',
-  linkedin: 'https://www.linkedin.com/in/yosia/',
+  linkedin: 'https://www.linkedin.com/in/yosia-pangondian-828104221',
   locale: 'en-US',
   analyticsURL: 'https://analytics.eu.umami.is/share/twSI8AhZ2dPuXRTg/Shizuka%20Web',
   analytics: {
