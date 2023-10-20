@@ -36,7 +36,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
               )}
             </h2>
             <div className="max-w-none space-y-2 text-gray-500 dark:text-gray-400">
-              <p>{repository?.description || description}</p>
+            {/* <p>{repository?.description || description}</p> */}
+              <p>{description}</p>
               <div className="flex flex-wrap space-x-1.5">
                 <span className="shrink-0">{t('projects.built_with')}:</span>
                 {builtWith?.map((tool, index) => {
