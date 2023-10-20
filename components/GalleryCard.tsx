@@ -9,7 +9,10 @@ import { Link } from './Link'
 
 export function GalleryCard({ gallery }: GalleryCardProps) {
   let { t } = useTranslation('common')
-  let { title, imgSrc, } = gallery
+  let { title, description, imgSrc, url, repo } = gallery
+  let { data } = useSWR(`/api/github?repo=${repo}`, fetcher)
+  let repository: GithubRepository = data?.repository
+  let href = repository?.url || url
 
   return (
     <div className="md p-4 md:w-1/2" style={{ maxWidth: '544px' }}>
@@ -17,22 +20,36 @@ export function GalleryCard({ gallery }: GalleryCardProps) {
         <Image
           alt={title}
           src={imgSrc}
-          className="object-cover object-center md:h-48 lg:h-80"
+          className="object-cover object-center md:h-36 lg:h-60"
           width={1088}
           height={612}
         />
         <div className="flex grow flex-col justify-between space-y-6 p-4 md:p-6">
           <div className="space-y-3">
             <h2 className="text-2xl font-bold leading-8 tracking-tight">
-              {(
+              {href ? (
+                <Link href={href} aria-label={`Link to ${title}`}>
+                  <span data-umami-event="project-title-link">{title}</span>
+                </Link>
+              ) : (
                 title
               )}
             </h2>
             <div className="max-w-none space-y-2 text-gray-500 dark:text-gray-400">
-              <div className="flex flex-wrap space-x-1.5">
-              </div>
+              <p>{description}</p>
             </div>
           </div>
+          {repository ? (
+            <GithubRepo repo={repository} />
+          ) : (
+            <Link
+              href={url}
+              className="text-base font-medium leading-6 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+              aria-label={`Link to ${title}`}
+            >
+              <span data-umami-event="project-learn-more">{t('projects.learn_more')} &rarr;</span>
+            </Link>
+          )}
         </div>
       </div>
     </div>

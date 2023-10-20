@@ -13,11 +13,10 @@ export interface Project {
 export interface Project_g {
   type: 'work' | 'self' | 'indonesia'
   title: string
-  // description?: string
+  description?: string
   imgSrc: string
-  // url?: string
-  // repo?: string
-  // builtWith: string[]
+  url?: string
+  repo?: string
 }
 
 export type SiteMetaData = typeof siteMetadata & {

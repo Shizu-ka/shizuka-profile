@@ -47,7 +47,7 @@ export function TypedBios() {
           <span className="ml-1">
             <Twemoji emoji="soccer-ball" />,
             <Twemoji emoji="man-swimming" />,
-            <Twemoji emoji="ping-pong" />,
+            <Twemoji emoji="ping-pong" />
             {/* <Twemoji emoji="volleyball" /> */}
           </span>
         </li>

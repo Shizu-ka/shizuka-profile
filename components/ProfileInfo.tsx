@@ -17,12 +17,7 @@ export function ProfileCardInfo() {
           <p className="flex items-center px-2 space-x-1">
             <span>Student</span>
             <span>@</span>
-            <a
-              target="_blank"
-              href="https://ub.ac.id"
-              rel="noreferrer"
-              className="hover:underline"
-            >
+            <a target="_blank" href="https://ub.ac.id" rel="noreferrer" className="hover:underline">
               Brawijaya
             </a>
           </p>
