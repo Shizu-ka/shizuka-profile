@@ -6,7 +6,6 @@ module.exports = {
     node: true,
     es6: true,
   },
-  endOfLine: 'off',
   extends: [
     'eslint:recommended',
     'plugin:jsx-a11y/recommended',
@@ -15,7 +14,9 @@ module.exports = {
     'next/core-web-vitals',
   ],
   rules: {
-    'prettier/prettier': 'error',
+    "prettier/prettier": ["error", {
+      "endOfLine":"auto"
+    }],
     'react/react-in-jsx-scope': 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',
