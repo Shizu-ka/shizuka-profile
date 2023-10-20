@@ -1,0 +1,217 @@
+---
+title: 'Weather Prediction with SVM, Decision Tree, and Gaussian'
+date: '2023-10-20'
+tags: ['python', 'weather', 'machine learning', 'svm', 'decision tree', 'gaussian']
+draft: false
+summary: "A perceptron is a basic building block of artificial neural networks (ANNs) and is one of the simplest machine learning algorithms. It is a type of linear classifier that can be used for tasks such as binary classification."
+images: ['/static/images/blog-weather/tree.jpg']
+authors: ['default']
+---
+
+import Twemoji from './Twemoji.tsx'
+import UnsplashPhotoInfo from './UnsplashPhotoInfo.tsx'
+
+![thumbnail-image](/static/images/blog-weather/tree.jpg)
+
+<UnsplashPhotoInfo photoURL="https://unsplash.com/photos/green-tree-on-grassland-during-daytime-EPy0gBJzzZU" author="Johann Siemens" />
+
+Weather prediction is a complex scientific process that involves analyzing various atmospheric conditions, historical data, and mathematical models to forecast future weather patterns. 
+It plays a crucial role in our daily lives, aiding in planning activities, ensuring safety, and optimizing resource allocation.
+This time, we will try to forecasting weather using decision tree, svm and gaussian.
+
+Before we jump into preprocessing, training testing and evaluating, we need to import the dataset and install scikit-learn matplotlib.
+
+`1. Import Dataset`
+```python
+!wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/Shizu-ka/bruvv/main/weatherAUS.csv
+```
+
+`2. Install scikit-learn`
+```python
+!pip install scikit-learn matplotlib
+```
+
+`3. Import Necessary Library`
+```python
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from collections import Counter
+%matplotlib inline
+
+# machine learning
+from sklearn.linear_model import LogisticRegression, SGDClassifier, LinearRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
+
+from sklearn import tree
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import accuracy_score
+```
+
+`4. Convert to Dataframe`
+```python
+ori = pd.read_csv('weatherAUS.csv')
+df = pd.read_csv('weatherAUS.csv')
+df_mean = pd.read_csv('weatherAUS.csv')
+df.head()
+```
+
+
+`5. Preprocessing`
+
+The next step is to do preprocessing. Keep in mind that you always welcome to do other method other
+than the one we do here. 
+First we need to check how many **null** does every columns have.
+
+```python
+df.isnull().mean()
+```
+
+![render-blocking-css](/static/images/blog-weather/meanAvg.png)
+<div style={{ textAlign: 'center', marginTop: '-16px' }}>
+  <small>Null Average</small>
+</div>
+
+Because **Evaporation**, **Sunshine**, **Cloud9am**, **Cloud3pm** contain more than **30%** zero values, they would be 
+less helpful for the model so they were removed. **Date** is also not needed
+
+```python
+df = df.drop(['Date','Evaporation','Sunshine','Cloud9am','Cloud3pm'], axis=1)
+df_mean = df_mean.drop(['Date','Evaporation','Sunshine','Cloud9am','Cloud3pm'], axis=1)
+df.head()
+```
+
+Machine learning model can not understand alphabets, so we need to convert it to number.
+The method is called **features encoding**.
+
+`Features encoding`
+```python
+cat_list = ['Location', 'WindGustDir', 'WindDir9am', 'WindDir3pm','RainToday', 'RainTomorrow']
+for column in cat_list:
+    df[column] = pd.Categorical(df[column])
+    df[column] = df[column].cat.codes
+    df[column].replace(-1, np.NaN, inplace=True)
+
+    df_mean[column] = pd.Categorical(df_mean[column])
+    df_mean[column] = df_mean[column].cat.codes
+    df_mean[column].replace(-1, np.NaN, inplace=True)
+```
+
+The next step is to replace null value in the dataframe. Null value is a problem we will need
+to take care. If these null values are not handled properly, they can introduce biases or inaccuracies 
+in the analysis and modeling process. There are many methods to fix this problem, such as
+
+- Mean/Median/Mode Imputation
+- Regression Imputation
+- Multiple Imputation
+- Hot-Deck Imputation
+- K-nearest neighbors (KNN)
+- MICE (Multivariate Imputation by Chained Equations)
+
+In this experiment we will use KNN method, using `KNNImputer` from sklearn library.
+
+```python
+from sklearn.impute import KNNImputer
+
+def filling_null(feature, df=df):
+
+    #make train set and test set
+    temp_df = df.copy().drop('RainTomorrow', axis=1)
+    df_list = list(temp_df.columns)
+    df_list.remove(feature)
+    temp_df.dropna(subset=df_list, inplace=True)
+    train = temp_df.loc[temp_df.notna()[feature]]
+    train_x = train.drop(feature, axis=1)
+    train_y = train[feature]
+    test = temp_df[temp_df.isnull()[feature]].drop(feature,axis=1)
+
+    #run machine learning model and predict null values
+    KNN = KNeighborsRegressor(n_jobs=-1)
+    KNN.fit(train_x, train_y)
+    change_NaN = KNN.predict(test)
+    index_list = test.index.tolist()
+    for i in range(len(change_NaN)):
+        df.at[index_list[i], feature]= change_NaN[i]
+
+    #return dataset which had been changed
+    return df
+```
+
+`Apply imputer`
+```python
+apply_list =['MinTemp', 'MaxTemp', 'WindGustDir', 'WindDir9am', 'WindDir3pm', 'Humidity9am',
+             'Humidity3pm', 'Pressure9am', 'Pressure3pm']
+for feature in apply_list:
+    df = filling_null(feature = feature)
+```
+
+`Check if there is any null value left`
+```python
+print(df.isnull().values.any())
+print(df_mean.isnull().values.any())
+```
+
+![render-blocking-css](/static/images/blog-iris/delete-virginica.png)
+<div style={{ textAlign: 'center', marginTop: '-16px' }}>
+  <small>Distribution of the sentosa and versicolor classes</small>
+</div>
+<br />
+
+As mentioned above, that perceptron target is only bipolar. But this case is only applied to target/classes. You can have as many features as you want.
+But in this case, we will delete 
+**sepal_width** and **petal_width**.
+
+```python
+iris = iris.drop(['sepal_width', 'petal_width'], axis=1)
+
+sns.pairplot(iris, hue='species')
+plt.show()
+```
+![render-blocking-css](/static/images/blog-iris/delete-features.png)
+<div style={{ textAlign: 'center', marginTop: '-16px' }}>
+  <small>CSS greatly affects page load time</small>
+</div>
+<br />
+
+As you can see from the picture above, the two classes are perfectly separated. This is good sign since its for practice purpose only.
+The next thing we will do is testing and training. 
+
+```python
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import minmax_scale
+
+X = iris[['sepal_length', 'petal_length', 'sepal_width','petal_width']].to_numpy()
+X = minmax_scale(X)
+
+y = iris['species'].to_numpy()
+c = {'setosa': -1, 'versicolor': 1}
+y = [c[i] for i in y]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.3)
+w, epoch = percep_fit(X_train, y_train, verbose=True, draw=True)
+out = percep_predict(X_test, w)
+accuracy = calc_accuracy(out, y_test)
+
+print('Epochs:', epoch)
+print('Accuracy:', accuracy)
+```
+![render-blocking-css](/static/images/blog-iris/final-train.png)
+<div style={{ textAlign: 'center', marginTop: '-16px' }}>
+  <small>Final train with accuracy 1</small>
+</div>
+<br />
+
+From the image above, we can see that our model can accurately predict the classes of iris. This is proven by looking at the line in the picture above. 
+The line is called **decision boundaries**. The reason we have 100% accuracy is because the line manages to separate the red and blue dots perfectly
+
+## References
+
+- [Implementing Perceptron with Python](https://pyimagesearch.com/2021/05/06/implementing-the-perceptron-neural-network-with-python/)
+
+Happy DLearn-ing! <Twemoji emoji="clinking-beer-mugs" />
