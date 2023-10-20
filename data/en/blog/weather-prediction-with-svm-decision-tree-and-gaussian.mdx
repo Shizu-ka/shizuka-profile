@@ -237,7 +237,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_
 
 `7. Make Models`
 
-The simple way to explain this is, 
+The simple way to explain these are, 
 1. Save model's fit function to zipped_clf
 2. Make function to train, **fit_classifier**
 3. Function to run the train, merge dataset and train function
@@ -327,9 +327,69 @@ plt.show()
 As you can see from the picture above, **RISK_MM** plays the most important role
 to **decide** wether its rain or not tomorrow.
 
+Now in case you need to see the **Cross-Validation** score, we will try 
+to apply cross validation on **gaussian model**
 
+```python
+from sklearn.model_selection import cross_val_score
+
+model_gaussian = GaussianNB()
+model_gaussian.fit(X, y)
+
+cv_scores = cross_val_score(model_gaussian, X_train, y_train, cv=5, scoring='accuracy')
+
+mean_score = cv_scores.mean()
+std_score = cv_scores.std()
+
+model_gaussian.fit(X_train, y_train)
+
+train_score = model_gaussian.score(X_train, y_train)
+
+test_score = model_gaussian.score(X_test, y_test)
+
+print("Mean Cross-Validation Score:", mean_score)
+print("Standard Deviation of Cross-Validation Scores:", std_score)
+print("Training Score:", train_score)
+print("Testing Score:", test_score)
+```
+`Visualization`
+```python
+import matplotlib.pyplot as plt
+
+# Plotting the scores
+labels = ['CV1', 'CV2', 'CV3', 'CV4', 'CV5']
+x = range(1, len(cv_scores) + 1)
+
+plt.plot(x, cv_scores, marker='o', linestyle='-', label='Cross-Validation')
+plt.axhline(y=train_score, color='green', linestyle='--', label='Training')
+plt.axhline(y=test_score, color='red', linestyle='--', label='Testing')
+
+plt.xlabel('Cross-Validation Fold')
+plt.ylabel('Accuracy Score')
+plt.title('Model Evaluation')
+plt.xticks(x, labels)
+plt.legend()
+plt.show()
+```
+![render-blocking-css](/static/images/blog-weather/eval.png)
+<div style={{ textAlign: 'center', marginTop: '-16px' }}>
+  <small>Decision Tree Structure</small>
+</div>
+<br />
+
+`Read this`
+
+If you read this message, thanks for reading all the article.
+I just want to let you know that if u have **any question**, you can email me at
+shizuka0@proton.me
+
+Also i made **a paper** about this, not official though, in case you need it
+just ask in the email, the paper is in Indonesia language.
+
+Thanks! Love u ❤️
 ## References
 
-- [Implementing Perceptron with Python](https://pyimagesearch.com/2021/05/06/implementing-the-perceptron-neural-network-with-python/)
+- [SVM](http://scikit-learn.org/stable/modules/svm.html)
+- [Gaussian](https://www.geeksforgeeks.org/python-gaussian-fit)
+- [Decision Tree](http://scikit-learn.org/stable/modules/tree.html)
 
-Happy DLearn-ing! <Twemoji emoji="clinking-beer-mugs" />
