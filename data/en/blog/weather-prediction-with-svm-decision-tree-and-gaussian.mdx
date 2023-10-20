@@ -156,10 +156,57 @@ for feature in apply_list:
 print(df.isnull().values.any())
 print(df_mean.isnull().values.any())
 ```
+```
+True
+True
+```
+True means there are **no null** values left in both dataframe.
 
-![render-blocking-css](/static/images/blog-iris/delete-virginica.png)
+As an extension, we can see how many null value changes per features. Sometimes too many changes
+means we manipulating the dataset. Because imputer is not always right at predicting true value.
+
+`Visualization of null changes`
+```python
+#getting information of number of null variable changed
+df_columns = list(df.columns)
+changed_dict = {}
+for col in df_columns:
+    changed_dict["%s" %col] = len(df[col].dropna()) - len(ori[col].dropna())
+
+#delet features which did not changed at all
+pop_list = ['Location','Rainfall','WindGustSpeed','WindSpeed9am','WindSpeed3pm','Temp9am','Temp3pm','RainToday','RainTomorrow']
+for feature in pop_list:
+    changed_dict.pop(feature)
+
+#make list of key and value to visualize the graph
+key_list = []
+value_list = []
+for key, value in changed_dict.items():
+    key_list.append(key)
+    value_list.append(value)
+
+temp_df = pd.DataFrame()
+temp_df['key'] = key_list
+temp_df['value'] = value_list
+
+#visualization
+plt.figure(figsize=(25, 10))
+plot = sns.barplot(x='key',y='value', data=temp_df)
+for p in plot.patches:
+    plot.annotate(format(p.get_height(), '0.0f'),
+                   (p.get_x() + p.get_width() / 2., p.get_height()),
+                   ha = 'center', va = 'center',
+                   xytext = (0, 9),
+                   textcoords = 'offset points')
+plt.yscale('log')
+plot.axes.get_yaxis().set_visible(False)
+plt.title('# of null values which changed to non-null values', fontsize=20)
+plt.show()
+```
+
+![render-blocking-css](/static/images/blog-weather/nullValue.png)
 <div style={{ textAlign: 'center', marginTop: '-16px' }}>
-  <small>Distribution of the sentosa and versicolor classes</small>
+  <small>Changes of null value</small>
 </div>
 <br />
 
