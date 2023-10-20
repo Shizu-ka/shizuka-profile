@@ -6,6 +6,7 @@ module.exports = {
     node: true,
     es6: true,
   },
+  endOfLine: 'off',
   extends: [
     'eslint:recommended',
     'plugin:jsx-a11y/recommended',
