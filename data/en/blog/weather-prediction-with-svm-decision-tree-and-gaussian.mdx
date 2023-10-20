@@ -160,7 +160,10 @@ print(df_mean.isnull().values.any())
 True
 True
 ```
-True means there are **no null** values left in both dataframe.
+True means there are **still null** values left in both dataframe. Why is this happening?
+The reason is the KNN imputation method relies on finding the **nearest neighbors** based on the available 
+features to impute the missing values. However, if **there are no** similar data points with non-null values for some feature, 
+the imputation may not be successful.
 
 As an extension, we can see how many null value changes per features. Sometimes too many changes
 means we manipulating the dataset. Because imputer is not always right at predicting true value.
@@ -210,16 +213,20 @@ plt.show()
 </div>
 <br />
 
-As mentioned above, that perceptron target is only bipolar. But this case is only applied to target/classes. You can have as many features as you want.
-But in this case, we will delete 
-**sepal_width** and **petal_width**.
+Now from the previous experiment, we still have rows with null values. Now to fix this we can just
+use mean to replace those null value.
 
 ```python
-iris = iris.drop(['sepal_width', 'petal_width'], axis=1)
-
-sns.pairplot(iris, hue='species')
-plt.show()
+df_Xnul = df.fillna(df.mean())
+print(df_Xnul.isnull().values.any())
 ```
+```
+False
+```
+Now our preprocessing is finished.
+
+`6. Splitting data training & tes`
+
 ![render-blocking-css](/static/images/blog-iris/delete-features.png)
 <div style={{ textAlign: 'center', marginTop: '-16px' }}>
   <small>CSS greatly affects page load time</small>
