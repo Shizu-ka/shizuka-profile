@@ -225,9 +225,100 @@ False
 ```
 Now our preprocessing is finished.
 
-`6. Splitting data training & tes`
+`6. Split Data Train & Test`
 
-![render-blocking-css](/static/images/blog-iris/delete-features.png)
+The target class in this experriment is, wether its **rain** tomorrow or not.
+
+```python
+X = df_Xnul.drop(['RainTomorrow'], axis=1)
+y = df_Xnul['RainTomorrow']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, shuffle=True)
+```
+
+`7. Make Models`
+
+The simple way to explain this is, 
+1. Save model's fit function to zipped_clf
+2. Make function to train, **fit_classifier**
+3. Function to run the train, merge dataset and train function
+
+```python
+classifier_names = ["Naive Bayes","Decision Tree", "SVM"]
+
+classifiers = [GaussianNB(), DecisionTreeClassifier(), SVC()]
+
+zipped_clf = zip(classifier_names,classifiers)
+```
+```python
+models = []
+def fit_classifier(pipeline, X_train, y_train, X_test, y_test):
+    model_fit = pipeline.fit(X_train, y_train)
+    models.append(model_fit)
+    y_pred = model_fit.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    print("accuracy score: {0:.2f}%".format(accuracy*100))
+    print()
+    return accuracy
+```
+```python
+def classifier(classifier, t_train, c_train, t_test, c_test):
+    result = []
+    for n,c in classifier:
+        checker_pipeline = Pipeline([
+            ('standardize', StandardScaler()),
+            ('classifier', c)
+        ])
+        print("Validation result for {}".format(n))
+        print(c)
+        clf_acc = fit_classifier(checker_pipeline, t_train, c_train, t_test,c_test)
+        result.append((n,clf_acc))
+    return result
+```
+```python
+result = classifier(zipped_clf, X_train, y_train, X_test, y_test)
+```
+**The result should look like this below**
+```
+Validation result for Naive Bayes
+GaussianNB()
+accuracy score: 95.73%
+
+Validation result for Decision Tree
+DecisionTreeClassifier()
+accuracy score: 100.00%
+
+Validation result for SVM
+SVC()
+accuracy score: 98.72%
+```
+
+`Evaluation`
+
+Now its interesting to see how Decision Tree able to have 100% accuracy.
+We can see what the strongest features in this experiment by looking at the
+tree's branches. 
+```python
+from sklearn.tree import DecisionTreeClassifier
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+X = df_Xnul.drop('RainTomorrow', axis=1)
+y = ori['RainTomorrow']
+
+# Initialization Decision Tree model
+model_tree = DecisionTreeClassifier()
+
+# Train model
+model_tree.fit(X, y)
+
+# Show decision tree structure
+plt.figure(figsize=(10, 8))
+_ = tree.plot_tree(model_tree, feature_names=X.columns.tolist(), class_names=['No Rain', 'Rain'], filled=True)
+
+plt.show()
+```
+
+![render-blocking-css](/static/images/blog-weather/treeBranches.png)
 <div style={{ textAlign: 'center', marginTop: '-16px' }}>
   <small>CSS greatly affects page load time</small>
 </div>
