@@ -1,27 +1,27 @@
 export let siteMetadata = {
   siteUrl: 'https://www.shizuka.my.id',
-  siteRepo: 'https://github.com/hta218/leohuynh.dev',
+  siteRepo: 'https://github.com/Shizu-ka/shizuka-profile',
   siteLogo: '/static/images/logo.jpg',
   image: '/static/images/logo.jpg',
   socialBanner: '/static/images/logo.jpg',
   email: 'shizuka0@proton.me',
   github: 'https://github.com/Shizu-ka',
-  x: 'https://x.com/elonmusk',
+  x: 'https://instagram.com/yosiatp_',
   facebook: 'https://facebook.com/elonmusk',
   youtube: 'https://www.youtube.com/elonmusk',
-  linkedin: 'https://www.linkedin.com/in/hta218/',
+  linkedin: 'https://www.linkedin.com/in/yosia/',
   locale: 'en-US',
-  analyticsURL: 'https://analytics.leohuynh.dev/share/jkwRskv0/leohuynh.dev',
+  analyticsURL: 'https://analytics.eu.umami.is/share/twSI8AhZ2dPuXRTg/Shizuka%20Web',
   analytics: {
     plausibleDataDomain: '',
     simpleAnalytics: false, // true | false
-    umamiWebsiteId: '2df62ae5-7f13-455b-8e54-c15b96ff2b8b',
+    umamiWebsiteId: 'ff28aa2e-6a67-4c71-82d4-2201fadd1db1',
     googleAnalyticsId: '', // e.g. UA-000000-2 or G-XXXXXXX
   },
   socialAccounts: {
-    github: 'hta218',
-    linkedin: 'hta218',
-    x: 'hta218_',
+    github: 'Shizu-ka',
+    linkedin: 'Yosia',
+    x: 'yosiatp_',
   },
 }
 
