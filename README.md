@@ -3,11 +3,16 @@
 My personal over-engineering site on the cloud.
 
 Changes from parent project
-+ gallery
-- snippets
-- language changer
-+ manual sitemap
-+ flag indonesia
+
+\+ gallery
+
+\- snippets
+
+\- language changer
+
+\+ manual sitemap
+
+\+ flag indonesia
 
 ## Tech stack
 
