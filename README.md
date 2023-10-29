@@ -36,21 +36,21 @@ If you got this error, then
 
 Open package.json and add "set" in front of PORT
 ```
-    "start": "set PORT=3434 next-remote-watch ./data",
+"start": "set PORT=3434 next-remote-watch ./data",
 ```
 </details>
 
 <details>
 <summary><b>How to change the text in the website?</b></summary>
 <br>
-Open **public\locales\en\common.json**, just look at whats inside, you will know what to do.
+Open <b>public\locales\en\common.json</b>, just look at whats inside, you will know what to do.
 </br>
 </details>
 
 <details>
 <summary><b>How to config the website?</b></summary>
 <br>
-Open **data\siteMetadata.ts**, just look at whats inside, you will know what to do.
+Open <b>data\siteMetadata.ts</b>b>, just look at whats inside, you will know what to do.
 </br>
 </details>
 
@@ -118,35 +118,35 @@ https://shizuka.my.id/?code=$CODE
 <details>
 <summary><b>How to edit navbar?</b></summary>
 <br>
-Open **data\headerNavLinks.ts**, just look at whats inside, you will know what to do.
+Open <b>data\headerNavLinks.ts</b>, just look at whats inside, you will know what to do.
 </br>
 </details>
 
 <details>
 <summary><b>How to turn on/off the language option?</b></summary>
 <br>
-Open **components\Header.tsx** line 53, just look at whats inside, you will know what to do.
+Open <b>components\Header.tsx</b> line 53, just look at whats inside, you will know what to do.
 </br>
 </details>
 
 <details>
 <summary><b>How to CRUD blog, snippets?</b></summary>
 <br>
-Open **data\en\blog** and **data\en\snippets** just look at whats inside, you will know what to do.
+Open <b>data\en\blog</b> and <b>data\en\snippets</b> just look at whats inside, you will know what to do.
 </br>
 </details>
 
 <details>
 <summary><b>Where to put the picture u are using?</b></summary>
 <br>
-Just put in **public\static\images**
+Just put in <b>public\static\images</b>
 </br>
 </details>
 
 <details>
 <summary><b>How to CRUD projects?</b></summary>
 <br>
-Open **data\en\projectsData.ts** line 53, just look at whats inside, you will know what to do. Same as gallery
+Open <b>data\en\projectsData.ts</b>, just look at whats inside, you will know what to do. Same as gallery
 </br>
 </details>
 
