@@ -2,7 +2,7 @@ import fs from 'fs'
 import { globby } from 'globby'
 import prettier from 'prettier'
 
-let SITE_URL = 'https://www.shizuka.my.id'
+let SITE_URL = 'https://www.shizuka.my.id/'
 
 ;(async () => {
   console.log('Generating sitemap...')
@@ -45,7 +45,7 @@ let SITE_URL = 'https://www.shizuka.my.id'
   })
 
   // eslint-disable-next-line no-sync
-  fs.writeFileSync('public/sitemap.xml', formatted)
+  fs.writeFileSync('public/sitemap2.xml', formatted)
 
-  console.log('Sitemap generated successfully in `public/sitemap.xml`.')
+  console.log('Sitemap generated successfully in `public/sitemap2.xml`.')
 })()
