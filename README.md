@@ -2,8 +2,9 @@
 
 My personal over-engineering site on the cloud.
 
-Changes from parent project
-
+<details>
+<summary><b>Changes from parent project</b></summary>
+  
 \+ gallery
 
 \+ add places to your gallery category, like Indonesia, beach or something. up to you
@@ -15,6 +16,9 @@ Changes from parent project
 \+ manual sitemap
 
 \+ flag indonesia
+
+</details>
+
 
 ## Tech stack
 
