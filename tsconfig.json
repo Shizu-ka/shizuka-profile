@@ -1,5 +1,5 @@
 {
-  "include": ["next-env.d.ts", "./**/*.ts", "./**/*.tsx", "data/en/galleryData"],
+  "include": ["next-env.d.ts", "./**/*.ts", "./**/*.tsx", "data/en/galleryData", "scripts/generate-sitemap.ts"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "target": "esnext",
