@@ -2,6 +2,13 @@
 
 My personal over-engineering site on the cloud.
 
+Changes from parent project
++ gallery
+- snippets
+- language changer
++ manual sitemap
++ flag indonesia
+
 ## Tech stack
 
 This blog is hosted on [Vercel](https://vercel.com/), built with [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/) using **Tailwind Nextjs Starter Blog**.
