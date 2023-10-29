@@ -6,6 +6,8 @@ Changes from parent project
 
 \+ gallery
 
+\+ add places to your gallery category, like Indonesia, beach or something. up to you
+
 \- snippets
 
 \- language changer
