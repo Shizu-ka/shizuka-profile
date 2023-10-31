@@ -102,7 +102,7 @@ Open [spotify dev](https://developer.spotify.com/dashboard)
    ```
    https://accounts.spotify.com/authorize?response_type=code&client_id=$CLIENT_ID&scope=$SCOPE&redirect_uri=$REDIRECT_URI
    ```
-   It will looks like this 
+   It will look like this 
    ```
    https://accounts.spotify.com/authorize?response_type=code&client_id=$CLIENT_ID&scope=user-read-currently-playing&redirect_uri=https%3A%2F%2Fshizuka.my.id%2F
    ```
