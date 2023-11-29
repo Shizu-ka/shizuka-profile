@@ -1,6 +1,7 @@
 export let siteMetadata = {
   siteUrl: 'https://www.shizuka.my.id',
   siteRepo: 'https://github.com/Shizu-ka/shizuka-profile',
+  fullName: 'Yosia Pangondian',
   siteLogo: '/static/images/logo.jpg',
   image: '/static/images/logo.jpg',
   socialBanner: '/static/images/logo.jpg',
