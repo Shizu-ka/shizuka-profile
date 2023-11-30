@@ -52,6 +52,9 @@
 
 /* End preamble; begin emoji classes */
 
+.twa-flushed {
+  background-image: url('https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f633.svg');
+}
 .twa-grinning-squinting-face {
   background-image: url('https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f606.svg');
 }

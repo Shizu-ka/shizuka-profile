@@ -21,9 +21,9 @@ export default function FourZeroFour() {
         <Image src={'/static/images/404.png'} alt="404" width={500} height={500} />
       </div>
       <div className="space-x-2 pt-8 md:space-y-5 md:pt-12 xl:pt-16">
-        <div className="max-w-md text-center">
+        <div className="max-w-20 text-center">
           <p className="mb-4 text-xl font-bold leading-normal md:text-2xl">
-            {t('lost_message')} <Twemoji emoji={'face-with-monocle'} />
+            {t('lost_message')} <Twemoji emoji={'flushed'} />
           </p>
           <p className="mb-8">{t('return_message')}</p>
           <Link href="/">
