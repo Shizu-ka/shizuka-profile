@@ -4,5 +4,5 @@ export let headerNavLinks = [
   { href: '/projects', label: 'menu_projects' },
   { href: '/about', label: 'menu_about' },
   { href: 'https://github.com/Shizu-ka', label: 'menu_resume' },
-  // { href: '/gallery', label: 'menu_gallery' },
+  { href: '/dashboard', label: 'menu_dashboard' },
 ]

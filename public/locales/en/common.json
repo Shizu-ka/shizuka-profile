@@ -14,7 +14,7 @@
   "menu_projects": "Projects",
   "menu_about": "About",
   "menu_resume": "Resume",
-  "menu_gallery": "Gallery",
+  "menu_dashboard": "Dashboard",
   "greeting_message": "Whatsuppp, fellow!",
   "introduction": "I'm",
   "name": "Yosia",
@@ -75,10 +75,13 @@
   },
   "projects": {
     "projects_description": "My open-source side projects and stuff that I built with my colleagues at school",
+    "dasboard_description": "This is dashboard i made wether for work or for fun to implement data visualization",
     "projects_title": "Projects",
+    "dashboard_title": "Dashboard",
     "work_title": "School",
     "side_title": "Side projects",
     "indonesia_title": "Indonesia",
+    "self_title": "Self Made",
     "learn_more": "Learn more",
     "built_with": "Built with"
   },
