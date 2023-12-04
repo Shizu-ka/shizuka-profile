@@ -81,7 +81,8 @@
     "work_title": "School",
     "side_title": "Side projects",
     "indonesia_title": "Indonesia",
-    "self_title": "Self Made",
+    "self_title": "Dashboard",
+    "colab_title": "Jupyter/Colab Notebook",
     "learn_more": "Learn more",
     "built_with": "Built with"
   },

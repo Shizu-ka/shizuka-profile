@@ -4,7 +4,7 @@ export let galleryData: Project_g[] = [
   {
     type: 'self',
     title: 'COVID 19 Dashboard',
-    description: `Spreading of covid in Indonesia`,
+    description: `Spreading of covid in Indonesia.`,
     imgSrc: '/static/images/dashboard/covid19.png',
     url: 'https://dashboard.shizuka.my.id/?id=0049e8c6-460c-4102-b343-19d0a04ef58a&title=Spread+of+Covid+in+Indonesia',
   },
@@ -14,5 +14,12 @@ export let galleryData: Project_g[] = [
     description: `Costumer feedback data visualization, with prepocessing.`,
     imgSrc: '/static/images/dashboard/CustomerFeedbackDashboard.png',
     url: 'https://dashboard.shizuka.my.id/?id=9f1628d2-b3b2-4dbe-8c23-993a0d47f6b5&title=Customer+Feedback+Dashboard',
+  },
+  {
+    type: 'colab',
+    title: 'Gold Prediction with LSTM and ARIMA',
+    description: `This is an experiment of gold prediction using LSTM and ARIMA.`,
+    imgSrc: '/static/images/dashboard/goldPrediction.png',
+    url: 'https://dashboard.shizuka.my.id/colab/gold-prediction.html?title=Gold+Prediction+with+LSTM+and+ARIMA',
   },
 ]

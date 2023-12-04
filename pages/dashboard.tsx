@@ -20,6 +20,7 @@ export default function Projects({ projectsData }: { projectsData: Project_g[] }
   // let workProjects = projectsData.filter(({ type }) => type === 'work')
   let sideProjects = projectsData.filter(({ type }) => type === 'self')
   // let indProjects = projectsData.filter(({ type }) => type === 'indonesia')
+  let colabProjects = projectsData.filter(({ type }) => type === 'colab')
   let { t } = useTranslation('common')
 
   let description = t('projects.dasboard_description')
@@ -47,6 +48,16 @@ export default function Projects({ projectsData }: { projectsData: Project_g[] }
           </h3>
           <div className="-m-4 flex flex-wrap">
             {sideProjects.map((project) => (
+              <GalleryCard key={project.title} gallery={project} />
+            ))}
+          </div>
+        </div>
+        <div className="container py-12">
+          <h3 className="mb-4 text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100">
+            {t('projects.colab_title')}
+          </h3>
+          <div className="-m-4 flex flex-wrap">
+            {colabProjects.map((project) => (
               <GalleryCard key={project.title} gallery={project} />
             ))}
           </div>
