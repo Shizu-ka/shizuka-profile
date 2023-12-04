@@ -22,4 +22,11 @@ export let galleryData: Project_g[] = [
     imgSrc: '/static/images/dashboard/goldPrediction.png',
     url: 'https://dashboard.shizuka.my.id/colab/gold-prediction.html?title=Gold+Prediction+with+LSTM+and+ARIMA',
   },
+  {
+    type: 'colab',
+    title: 'LVQ Implementation in Hand-written MNIST Dataset',
+    description: `This is an experiment of Hand writing prediction using LVQ, LVQ2 and LVQ2.1.`,
+    imgSrc: '/static/images/dashboard/lvqMNIST.png',
+    url: 'https://dashboard.shizuka.my.id/colab/hand-lvq-prediction.html?title=LVQ+Implementation+in+Hand-written+MNIST+Dataset',
+  },
 ]
