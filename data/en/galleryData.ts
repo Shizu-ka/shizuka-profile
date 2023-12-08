@@ -31,6 +31,13 @@ export let galleryData: Project_g[] = [
   },
   {
     type: 'colab',
+    title: 'Used Car EDA and Price Prediction with RFG And LGBM',
+    description: `This notebook is showing EDA of dataset car from craiglist, filling up extreme null value and predict the price with Random forest and LGBM.`,
+    imgSrc: '/static/images/dashboard/usedCar.png',
+    url: 'https://dashboard.shizuka.my.id/colab/used-car.html?title=Used+Car+EDA+and+Price+Prediction+with+RFG+And+LGBM',
+  },
+  {
+    type: 'colab',
     title: 'LVQ Implementation in Hand-written MNIST Dataset',
     description: `This is an experiment of Hand writing prediction using LVQ, LVQ2 and LVQ2.1.`,
     imgSrc: '/static/images/dashboard/lvqMNIST.png',
