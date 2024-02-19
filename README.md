@@ -172,4 +172,4 @@ Open <b>data\en\projectsData.ts</b>, just look at whats inside, you will know wh
 
 If you have any question, feel free to email me at <a href="mailto:shizuka0@proton.me">Shizuka</a>
 
-Copyright (c) 2023 Shizuka - Alrights reserved.
+Copyright (c) 2024 Shizuka - Alrights reserved.
