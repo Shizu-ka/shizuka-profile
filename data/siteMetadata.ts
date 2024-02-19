@@ -3,7 +3,7 @@ export let siteMetadata = {
   siteRepo: 'https://github.com/Shizu-ka/shizuka-profile',
   siteLogo: '/static/images/logo.jpg',
   image: '/static/images/logo.jpg',
-  socialBanner: '/static/images/logo.jpg',
+  socialBanner: '/static/images/socialBanner.png',
   email: 'shizuka0@proton.me',
   github: 'https://github.com/Shizu-ka',
   x: 'https://instagram.com/yosiatp_',
