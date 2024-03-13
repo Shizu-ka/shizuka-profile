@@ -24,6 +24,13 @@ export let galleryData: Project_g[] = [
   },
   {
     type: 'colab',
+    title: 'Data Analysis and EDA on Beijing Air Quality Dataset',
+    description: `This experiment has detailed preprocessing, analysis, visualization and a simple dashboard on Beijing dataset.`,
+    imgSrc: '/static/images/dashboard/beijingAir.png',
+    url: 'https://dashboard.shizuka.my.id/colab/beijing-air.html?title=Data+Analysis+and+EDA+on+Beijing+Air+Quality+Dataset',
+  },
+  {
+    type: 'colab',
     title: 'Gold Prediction with LSTM and ARIMA',
     description: `This is an experiment of gold prediction using LSTM and ARIMA.`,
     imgSrc: '/static/images/dashboard/goldPrediction.png',
