@@ -11,16 +11,6 @@ export let projectsData: Project[] = [
     builtWith: ['PHP', 'Laravel', 'Boostrap', 'Blade'],
   },
   {
-    type: 'self',
-    title: 'Recipe Website Template',
-    description:
-      'A simple recipe website template, made using simple html, js and css. The website template features a clean and intuitive design, making it easy for users to navigate and find their desired recipes.',
-    imgSrc: '/static/images/hiCal.png',
-    repo: 'Shizu-ka/Website-Calorie',
-    url: 'https://github.com/Shizu-ka/Website-Calorie',
-    builtWith: ['Html', 'CSS', 'Js', 'Boostrap'],
-  },
-  {
     type: 'school',
     title: 'Pizza Hut, Java program made with Swing, Sql, Jasper',
     description: `The Java program developed using Swing, SQL, and Jasper provides an efficient and user-friendly solution for managing data, generating reports, and enhancing the overall experience of restaurant operations at Pizza Hut.`,
@@ -40,10 +30,19 @@ export let projectsData: Project[] = [
   {
     type: 'school',
     title: 'Quiz App',
-    description: `The Quiz App, developed using Kotlin for Java programming, provides an interactive platform for users to test their knowledge and skills in the Java programming language.`,
+    description: 'The Quiz App, developed using Kotlin for Java programming, provides an interactive platform for users to test their knowledge and skills in the Java programming language.',
     imgSrc: '/static/images/quizApp.jpg',
     repo: 'Shizu-ka/Quiz-App',
     builtWith: ['Kotlin', 'Compose','MVC'],
+  },
+  {
+    type: 'self',
+    title: 'Recipe Website Template',
+    description: 'A simple recipe website template, made using simple html, js and css. The website template features a clean and intuitive design, making it easy for users to navigate and find their desired recipes.',
+    imgSrc: '/static/images/hiCal.png',
+    repo: 'Shizu-ka/Website-Calorie',
+    url: 'http://github.com/Shizu-ka/Website-Calorie',
+    builtWith: ['Html', 'CSS', 'Js', 'Boostrap'],
   },
   {
     type: 'self',
@@ -53,5 +52,14 @@ export let projectsData: Project[] = [
     repo: 'Shizu-ka/School-Profile-Website',
     url: 'http://sdn2ampeldento.my.id/',
     builtWith: ['JS', 'HTML', 'Boostrap', 'CSS', 'AJAX'],
+  },
+  {
+    type: 'self',
+    title: 'Belajar Asik Tentang Partai Politik Website',
+    description: 'This website i made as a freelance project for my friend from Fakultas Ekonomi dan Bisnis Universitas Brawijaya.',
+    imgSrc: '/static/images/bisikMyId.png',
+    repo: 'Shizu-ka.github.io/Partai-Profile-Website',
+    url: 'http://bizik.my.id/',
+    builtWith: ['JS', 'HTML', 'Boostrap', 'CSS'],
   },
 ]
