@@ -43,7 +43,7 @@ export let projectsData: Project[] = [
     description: `The Quiz App, developed using Kotlin for Java programming, provides an interactive platform for users to test their knowledge and skills in the Java programming language.`,
     imgSrc: '/static/images/quizApp.jpg',
     repo: 'Shizu-ka/Quiz-App',
-    builtWith: ['Kotlin', 'Compose'],
+    builtWith: ['Kotlin', 'Compose','MVC'],
   },
   {
     type: 'self',
