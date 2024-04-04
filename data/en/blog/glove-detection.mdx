@@ -102,7 +102,7 @@ augmentation_rotate: 0.6  # Rotation augmentation probability
 ```python
 !yolo task=detect mode=train model=yolov8n.pt data=data_aug.yaml epochs=200 imgsz=512 batch=16 workers=8 augment=True device=cuda conf=0.3
 ```
-The purpose of this command is to **detect** faces using YOLO from our picture. Here is a little bit of the explanation.
+The purpose of this command is to **detect** glove using YOLO from our picture. Here is a little bit of the explanation.
 - **conf** : Sets the minimum confidence threshold for detections. Objects detected with confidence below this threshold will be disregarded.
 - **imgsz** : Specifies the size of all image. Which in this case we use 512x512 px. More pixel means more accurate but slow train.
 - Other part is i think a bit self-explaining.
