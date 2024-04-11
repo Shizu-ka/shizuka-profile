@@ -30,9 +30,10 @@ In this experiment, we will use dataset from Kaggle. You can **run all** the syn
 import os
 os.environ['KAGGLE_CONFIG_DIR'] = '/content'
 ```
-```python
-!wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/Shizu-ka/bruvv/main/kaggle.json
-```
+
+Before you run the next syntax you need to **upload your kaggle.json to the google colab**, 
+you can see this [tutorial](https://www.kaggle.com/docs/api) on how to get the kaggle.json file.
+
 ```python
 !kaggle datasets download -d jiashenliu/515k-hotel-reviews-data-in-europe
 ```
