@@ -75,9 +75,9 @@
   },
   "projects": {
     "projects_description": "My open-source side projects and stuff that I built with my colleagues at school",
-    "dasboard_description": "This is dashboard i made wether for work or for fun to implement data visualization",
+    "dasboard_description": "These are the data science projects i made wether for work or for fun to implement method like EDA, prepocessing, prediction and data visualization",
     "projects_title": "Projects",
-    "dashboard_title": "Dashboard",
+    "dashboard_title": "Data Science",
     "work_title": "School",
     "side_title": "Side projects",
     "indonesia_title": "Indonesia",
