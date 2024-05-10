@@ -23,7 +23,7 @@ By doing this, we can offer more precise and fitting recommendations. Our goal i
 hotels that closely match their search intent and desired features.  
 We also use **google colab** as our platform today. So, let's jump in!
 
-## `1. Gather dataset`
+### `1. Gather Dataset`
 
 In this experiment, we will use dataset from Kaggle. You can **run all** the syntax below to gather the dataset. 
 ```python
@@ -41,7 +41,7 @@ you can see this [tutorial](https://www.kaggle.com/docs/api) on how to get the k
 !unzip \*.zip && rm *.zip
 ``` 
 
-## `2. Import Library`
+### `2. Import Library`
 
 ```python
 import pandas as pd
@@ -62,7 +62,7 @@ df = pd.read_csv('Hotel_Reviews.csv')
 df.head()
 ```
 
-## `3. Preprocessing Dataset`
+### `3. Preprocessing Dataset`
 
 Check dataframe detail information
 
@@ -151,7 +151,7 @@ Output
 ['Netherlands' 'UK' 'France' 'Spain' 'Italy' 'Austria']
 ```
 
-## `4. Preprocessing Tags`
+### `4. Preprocessing Tags`
 
 If we look back at our dataset, we will see that tags column is in **string type**. Well we can not map each tag if their entire tag is in
 1 string. So we will fix this by **converting** it to **set**.
@@ -200,7 +200,7 @@ def remove_tag(tags_set):
 df1['tags'] = df1['tags'].apply(remove_tag)
 ```
 
-## `5. Make the Model`
+### `5. Make the Model`
 
 Now we will make our model. First we will make a function called recommend_hotel that takes an input description and optional data. 
 1. **It preprocesses** the input by converting it to lowercase, tokenizing it, removing stop words, and lemmatizing the words. 
@@ -242,7 +242,7 @@ def recommend_hotel(input_description, data=df1):
     return data[['hotel_name', 'hotel_address', 'average_score']].head()
 ```
 
-## `6. Use Case`
+### `6. Use Case`
 ### First Example
 Now we will use our function to make predictions.
 ```python
