@@ -27,7 +27,7 @@ Here's why you should consider YOLOv8's predict mode for your various inference 
 In this experiment we will try to use pretrained YOLOv8 model to detect and count faces on an image. 
 We also use **google colab** as our platform today. So, let's jump in! 🤗🤩  
 
-`1. Import Library`
+### `1. Import Library`
 ```python
 from matplotlib import pyplot as plt
 import cv2
@@ -35,7 +35,7 @@ import cv2
 After we import the necessary library, the next step is to download the image we want to use. **Run this code below if you want to 
 use the example image** you always welcome to use other image.
 
-`2. Prepare the Image`
+### `2. Prepare the Image`
 ```python
 !wget --no-check-certificate --content-disposition https://github.com/Shizu-ka/bruvv/raw/main/selfie.png
 
@@ -53,7 +53,7 @@ plt.show()
 
 The next step is to download the pretrained model. You can use the pretrained model i provide on my Github.
 
-`3. Download Pretrained Model`
+### `3. Download Pretrained Model`
 ```python
 !wget --no-check-certificate --content-disposition https://github.com/Shizu-ka/bruvv/raw/main/yolov8n-face.pt
 ```
@@ -61,7 +61,7 @@ The next step is to download the pretrained model. You can use the pretrained mo
 After that, the next step is to install Ultralytics. For your information, Ultralytics is a platform for creating, 
 training, and deploying machine learning models with a no-code interface.
 
-`4. Install Ultralytics`
+### `4. Install Ultralytics`
 ```python
 %pip install ultralytics
 import ultralytics
@@ -74,7 +74,7 @@ ultralytics.checks()
 </div>
 <br />
 
-`5. Predict`
+### `5. Predict`
 ```python
 !yolo task=detect mode=predict model=yolov8n-face.pt conf=0.25 imgsz=1280 line_width=1 max_det=1000 source=selfie.png
 ```
@@ -91,7 +91,7 @@ You can read what other argument does or improvise according to your needs on Ul
 </div>
 <br />
 
-`6. Count Faces`
+### `6. Count Faces`
 ```python
 from ultralytics import YOLO
 
@@ -104,7 +104,7 @@ face_count = sum(len(result) for result in results)
 This might look a little bit weird because we predict the image 2 times. But we predict the image again the second time is because
 we need to save the result as **an array** to **count the faces**. You can see it at variabel **face_count** where it saved the len of the array.
 
-`7. Show the Result`
+### `7. Show the Result`
 ```python
 img = cv2.imread('/content/runs/detect/predict/selfie.png')
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)

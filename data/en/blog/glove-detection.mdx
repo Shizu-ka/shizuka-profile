@@ -20,7 +20,7 @@ YOLOv8 offers a powerful feature known as predict mode that is tailored for high
 In this experiment we will try to train YOLOv8 model(yolov8n.pt) to detect wether someone is using glove or not. 
 We also use **google colab** as our platform today. So, let's jump in!
 
-`1. Gather dataset`
+### `1. Gather dataset`
 
 Keep in mind that gathering and labeling dataset **IS REALLY HARD**. So, today instead of gather it manual and even annotate it manual,
 we will use Roboflow. 
@@ -38,7 +38,7 @@ If you want to learn more about it, you can visit their [website](https://robofl
 The picture above is how our dataset looks like. It has 1708 picture and 2 class (glove and no_glove). Sorry, but the current dataset is still **private**, you can check Roboflow
 to get the similar dataset as mine.
 
-`2. Prepare the Image`
+### `2. Prepare the Image`
 
 ![render-blocking-css](/static/images/blog-glove-detection/2.png)
 <div style={{ textAlign: 'center', marginTop: '-16px' }}>
@@ -56,7 +56,7 @@ with zipfile.ZipFile("data2.zip","r") as zip_ref:
     zip_ref.extractall()
 ```
 
-`3. Install Ultralytics`
+### `3. Install Ultralytics`
 
 ```python
 %pip install ultralytics
@@ -70,7 +70,7 @@ ultralytics.checks()
 </div>
 <br />
 
-`4. Train`
+### `4. Train`
 
 Now here is the train part. After read many journals, for this experiment, we will try to use data augmentation to train our model.
 Below is how we want our training part run. The Mosaic is turned off during the last 10 epochs of model training, 
@@ -122,13 +122,13 @@ the most important part is mAP50 and mAP50-95. Here is some explanation
 - **mAP50-95**: This metric represents the mean Average Precision averaged across different IoU thresholds 
 from 0.5 to 0.95 with a step size of 0.05. Our model achieved an mAP50-95 of **0.755**, which is also a decent score.
 
-`5. Predict`
+### `5. Predict`
 ```python
 !yolo task=detect mode=predict model=runs/detect/train/weights/best.pt data=data_aug.yaml source=1.jpg
 ```
 **You can change the source depending on your needs.** In this case, i use my own example picture.
 
-`6. Show the Result`
+### `6. Show the Result`
 ```python
 from matplotlib import pyplot as plt
 import cv2
