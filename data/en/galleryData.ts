@@ -3,6 +3,13 @@ import type { Project_g } from '~/types/data'
 export let galleryData: Project_g[] = [
   {
     type: 'self',
+    title: 'World Happiness Data on Tableau',
+    description: `World Happiness Data and relation between GDP and happiness score on Tableau.`,
+    imgSrc: '/static/images/dashboard/tableau_dashboard.png',
+    url: 'https://public.tableau.com/views/WorldHappiness_17164399448990/Dashboard1?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link',
+  },
+  {
+    type: 'self',
     title: 'Customer Feedback Dashboard',
     description: `Costumer feedback data visualization, with prepocessing.`,
     imgSrc: '/static/images/dashboard/CustomerFeedbackDashboard.png',
@@ -31,10 +38,10 @@ export let galleryData: Project_g[] = [
   },
   {
     type: 'colab',
-    title: 'Gold Prediction with LSTM and ARIMA',
-    description: `This is an experiment of gold prediction using LSTM and ARIMA.`,
-    imgSrc: '/static/images/dashboard/goldPrediction.png',
-    url: 'https://dashboard.shizuka.my.id/colab/gold-prediction.html?title=Gold+Prediction+with+LSTM+and+ARIMA',
+    title: 'Custom VGG Network with Functional API',
+    description: `This is how you create VGG network from scratch, so you can custom it.`,
+    imgSrc: '/static/images/dashboard/vgg.png',
+    url: 'https://dashboard.shizuka.my.id/colab/vgg-network.html?title=Custom+VGG+Network',
   },
   {
     type: 'colab',
@@ -42,6 +49,20 @@ export let galleryData: Project_g[] = [
     description: `This notebook is showing EDA of dataset car from craiglist, filling up extreme null value and predict the price with Random forest and LGBM.`,
     imgSrc: '/static/images/dashboard/usedCar.png',
     url: 'https://dashboard.shizuka.my.id/colab/used-car.html?title=Used+Car+EDA+and+Price+Prediction+with+RFG+And+LGBM',
+  },
+  {
+    type: 'colab',
+    title: 'Generative Adversarial Network with Hands',
+    description: `We will build a Generative Adversarial Network (GAN) that generates pictures of hands.`,
+    imgSrc: '/static/images/dashboard/hands_gans.png',
+    url: 'https://dashboard.shizuka.my.id/colab/hands-gans.html?title=Generative+Adversarial+Network+with+Hands',
+  },
+  {
+    type: 'colab',
+    title: 'Gold Prediction with LSTM and ARIMA',
+    description: `This is an experiment of gold prediction using LSTM and ARIMA.`,
+    imgSrc: '/static/images/dashboard/goldPrediction.png',
+    url: 'https://dashboard.shizuka.my.id/colab/gold-prediction.html?title=Gold+Prediction+with+LSTM+and+ARIMA',
   },
   {
     type: 'colab',

@@ -3,6 +3,15 @@ import type { Project } from '~/types/data'
 export let projectsData: Project[] = [
   {
     type: 'school',
+    title: 'Handwriting Classifier',
+    description: `Train and classify MNIST digit with TensorflowJs and running it on webgl.`,
+    imgSrc: '/static/images/handwriting-class.png',
+    repo: 'Shizu-ka/handwriting-classifier',
+    url: 'https://handwc.shizuka.my.id/',
+    builtWith: ['Tensorflow', 'Js', 'TfJs'],
+  },
+  {
+    type: 'school',
     title: 'CariEO, Find your Event Organizer',
     description: `CariEO is an online platform designed to make it easier for users to search for and find event organizers (EO) that suit their needs.`,
     imgSrc: '/static/images/cariEO.png',
