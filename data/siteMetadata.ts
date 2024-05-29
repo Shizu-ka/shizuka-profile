@@ -11,7 +11,7 @@ export let siteMetadata = {
   youtube: 'https://www.youtube.com/elonmusk',
   linkedin: 'https://www.linkedin.com/in/yosia-pangondian-828104221',
   locale: 'en-US',
-  analyticsURL: 'https://analytics.eu.umami.is/share/twSI8AhZ2dPuXRTg/Shizuka%20Web',
+  analyticsURL: 'https://cloud.umami.is/share/twSI8AhZ2dPuXRTg/www.shizuka.my.id',
   analytics: {
     plausibleDataDomain: '',
     simpleAnalytics: false, // true | false
