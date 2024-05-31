@@ -71,4 +71,13 @@ export let projectsData: Project[] = [
     url: 'http://bizik.my.id/',
     builtWith: ['JS', 'HTML', 'Boostrap', 'CSS'],
   },
+  {
+    type: 'self',
+    title: 'Cute Birthday Website',
+    description: 'This is a simple website to wishing someone a happy birthday message / cards.',
+    imgSrc: '/static/images/birthday_website.png',
+    repo: 'Shizu-ka/Birthday-Website',
+    url: 'https://shizu-ka.github.io/Birthday-Website/',
+    builtWith: ['JS', 'HTML', 'Boostrap', 'CSS'],
+  },
 ]
