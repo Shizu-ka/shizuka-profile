@@ -70,7 +70,7 @@ Open <b>public\locales\en\common.json</b>, just look at whats inside, you will k
 <details>
 <summary><b>How to config the website?</b></summary>
 <br>
-Open <b>data\siteMetadata.ts</b>b>, just look at whats inside, you will know what to do.
+Open <b>data\siteMetadata.ts</b>, just look at whats inside, you will know what to do.
 </br>
 </details>
 
