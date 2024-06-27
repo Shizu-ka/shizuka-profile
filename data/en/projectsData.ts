@@ -3,6 +3,15 @@ import type { Project } from '~/types/data'
 export let projectsData: Project[] = [
   {
     type: 'school',
+    title: 'Easy Text Augmenter',
+    description: `Augment text data directly on your pandas dataframe using various NLP techniques; augmenting with random word, random character and augmenting with BERT.`,
+    imgSrc: '/static/images/easy_text_augmenter.jpeg',
+    repo: 'Shizu-ka/easy-nlp-augmentation',
+    url: 'https://pypi.org/project/easy-nlp-augmentation/',
+    builtWith: ['Python', 'Sdist', 'PyPI'],
+  },
+  {
+    type: 'school',
     title: 'Handwriting Classifier',
     description: `Train and classify MNIST digit with TensorflowJs and running it on webgl.`,
     imgSrc: '/static/images/handwriting-class.png',
