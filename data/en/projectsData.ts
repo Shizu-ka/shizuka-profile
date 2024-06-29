@@ -6,6 +6,7 @@ export let projectsData: Project[] = [
     title: 'Easy Text Augmenter',
     description: `Augment text data directly on your pandas dataframe using various NLP techniques; augmenting with random word, random character and augmenting with BERT.`,
     imgSrc: '/static/images/easy_text_augmenter.jpeg',
+    repo: 'Shizu-ka/Easy-NLP-Augmentation',
     url: 'https://pypi.org/project/easy-nlp-augmentation/',
     builtWith: ['Python', 'Sdist', 'PyPI'],
   },
