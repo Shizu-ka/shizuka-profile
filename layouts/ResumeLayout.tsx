@@ -5,6 +5,9 @@ import type { ResumeLayoutProps } from '~/types'
 
 export function ResumeLayout({ children }: ResumeLayoutProps) {
   let description = 'My experiences, education and skills.'
+  
+  // Replace this with your Google Drive embedded link
+  const driveEmbedLink = `https://drive.google.com/file/d/${siteMetadata.cvId}/preview`
 
   return (
     <>
@@ -20,7 +23,13 @@ export function ResumeLayout({ children }: ResumeLayoutProps) {
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">{description}</p>
         </div>
-        <iframe title="resume" src="/resume.pdf" className="w-full h-screen"></iframe>
+        <iframe 
+          title="resume" 
+          src={driveEmbedLink}
+          className="w-full h-screen"
+          frameBorder="0"
+          allowFullScreen
+        ></iframe>
       </div>
     </>
   )

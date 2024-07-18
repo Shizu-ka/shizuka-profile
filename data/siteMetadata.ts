@@ -13,6 +13,7 @@ export let siteMetadata = {
   linkedin: 'https://www.linkedin.com/in/yosia-pangondian-828104221',
   locale: 'en-US',
   analyticsURL: 'https://cloud.umami.is/share/twSI8AhZ2dPuXRTg/www.shizuka.my.id',
+  cvId: '1TPXRT82L0XyYKcrDCvaof7MejrXfpnJd',
   analytics: {
     plausibleDataDomain: '',
     simpleAnalytics: false, // true | false
