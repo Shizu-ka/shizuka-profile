@@ -4,7 +4,7 @@ export let siteMetadata = {
   fullName: 'Yosia Pangondian',
   siteLogo: '/static/images/logo.jpg',
   image: '/static/images/logo.jpg',
-  socialBanner: '/static/images/logo.jpg',
+  socialBanner: '/static/images/socialBannerNew.png',
   email: 'shizuka0@proton.me',
   github: 'https://github.com/Shizu-ka',
   x: 'https://instagram.com/yosiatp_',
@@ -12,7 +12,7 @@ export let siteMetadata = {
   youtube: 'https://www.youtube.com/elonmusk',
   linkedin: 'https://www.linkedin.com/in/yosia-pangondian-828104221',
   locale: 'en-US',
-  analyticsURL: 'https://analytics.eu.umami.is/share/twSI8AhZ2dPuXRTg/Shizuka%20Web',
+  analyticsURL: 'https://cloud.umami.is/share/twSI8AhZ2dPuXRTg/www.shizuka.my.id',
   analytics: {
     plausibleDataDomain: '',
     simpleAnalytics: false, // true | false

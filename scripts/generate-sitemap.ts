@@ -45,7 +45,7 @@ let SITE_URL = 'https://www.shizuka.my.id/'
   })
 
   // eslint-disable-next-line no-sync
-  fs.writeFileSync('public/sitemap2.xml', formatted)
+  fs.writeFileSync('public/sitemap.xml', formatted)
 
   console.log('Sitemap generated successfully in `public/sitemap2.xml`.')
 })()

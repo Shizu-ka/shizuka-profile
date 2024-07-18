@@ -5,7 +5,7 @@
     "full_name": "Yosia",
     "header_title": "Yosia's blog - Yosia's coding journey",
     "footer_title": "Yosia's blog - Yosia's coding journey",
-    "description": "Yosia's coding journey - work and life stories through the keyboard of an open-minded Software Engineer",
+    "description": "My coding journey - work and life stories through the keyboard of a passionate Data Scientist",
     "language": "en"
   },
   "happy_reading": "Happy reading",
@@ -14,7 +14,7 @@
   "menu_projects": "Projects",
   "menu_about": "About",
   "menu_resume": "Resume",
-  "menu_gallery": "Gallery",
+  "menu_dashboard": "Data Science",
   "greeting_message": "Whatsuppp, fellow!",
   "introduction": "I'm",
   "name": "Yosia",
@@ -49,7 +49,7 @@
   "avatar_description": "avatar",
   "name_position": "Yosia (Shizuka)",
   "description_position": "Learner | Builder",
-  "lost_message": "Hmm.. it seems that you're lost",
+  "lost_message": "Anooo onisan, it seems that you're lost",
   "return_message": "But don't worry, you can find plenty of other things on my homepage.",
   "back_button": "Back to homepage",
   "blog": {
@@ -75,10 +75,14 @@
   },
   "projects": {
     "projects_description": "My open-source side projects and stuff that I built with my colleagues at school",
+    "dasboard_description": "These are the data science projects i made wether for work or for fun to implement method like EDA, prepocessing, prediction and data visualization",
     "projects_title": "Projects",
+    "dashboard_title": "Data Science",
     "work_title": "School",
     "side_title": "Side projects",
     "indonesia_title": "Indonesia",
+    "self_title": "Dashboard",
+    "colab_title": "Jupyter/Colab Notebook",
     "learn_more": "Learn more",
     "built_with": "Built with"
   },

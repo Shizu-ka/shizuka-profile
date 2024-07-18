@@ -1,0 +1,155 @@
+---
+title: 'Bangkit : Editing Files using Substrings'
+date: '2024-02-26'
+tags: ['bangkit', 'python']
+draft: false
+summary: "In this lab, you will change the username of your coworker Jane Doe from \"jane\" to \"jdoe\" in compliance with company's naming policy. The username change has already been done."
+images: ['/static/images/blog-bangkit-satu/clay-banks.jpg']
+authors: ['default']
+---
+
+import Twemoji from './Twemoji.tsx'
+import UnsplashPhotoInfo from './UnsplashPhotoInfo.tsx'
+
+![thumbnail-image](/static/images/blog-bangkit-satu/clay-banks.jpg)
+
+<UnsplashPhotoInfo photoURL="https://unsplash.com/photos/three-bicycles-parked-in-front-of-building-hwLAI5lRhdM" author="Clay Banks" />
+
+# Langkah 1
+## Pastikan sudah selesai sampai langkah ini di qwiklabs
+
+![render-blocking-css](/static/images/blog-bangkit-satu/0.png)
+<div style={{ textAlign: 'center', marginTop: '-16px' }}>
+  <small>Exercise selesai</small>
+</div>
+<br />
+
+# Langkah 2 : Find files using bash script
+Inti dari bagian ini adalah, gimana cara kita ngelist path file dengan nama jane dari list.txt. Namun, ga semua nama(file) di list itu file nya ada di direktori kita. Sehingga kita juga harus cek 1 per 1 mana yang ada dan ga ada di direktori kita.
+
+Nah kalau file nya benar benar ada di direktori, kita insert deh ke oldFiles.txt
+`1. Pergi ke Scripts dan Buat File findJane.sh`
+```bash
+cd ~/scripts
+```
+```bash
+nano findJane.sh
+```
+
+`2. Copy dan Paste Script ini dalam findJane.sh`
+```bash
+#!/bin/bash
+
+dir="/home/student-01-bb62151xxx"
+
+while IFS= read -r file; do
+    if [ -e "$dir/$file" ]; then
+        echo "$file" >> oldFiles.txt
+    else
+        echo "File not found: $file"
+    fi
+done < /dev/stdin
+```
+**Jangan lupa ganti string dir sesuai path absolute linux kalian (bisa pakai command pwd buat cari tahu)**.
+
+Setelah itu keluar dari nano dengan klik ctrl + o, Enter, dan ctrl + x
+
+Penjelasan singkat dari script itu adalah : 
+1. Baca baris dari input dan simpan dalam variabel file.
+2. Jika file ada, maka simpan(append) path nya ke oldFiles.txt.
+3. Jika tidak print file not found.
+
+`3. Update Security`
+```bash
+chmod +x findJane.sh
+```
+
+`4. Run Script`
+```bash
+grep " jane " ../data/list.txt | cut -d ' ' -f 3 | ./findJane.sh
+```
+Penjelasaan ini baca di exercise di atas bagian Test Command.
+
+![render-blocking-css](/static/images/blog-bangkit-satu/1.png)
+<div style={{ textAlign: 'center', marginTop: '-16px' }}>
+  <small>Checkpoint 1</small>
+</div>
+<br />
+
+Nahhh, kalau tampilan kalian sudah begini, coba cek checkpoint 1 di qwiklabs nya.
+
+# Langkah 3 : Rename files using Python script
+Inti dari bagian ini adalah, bagaimana cara kita mengganti 
+nama file di direktori kita. Nah nama file yang akan diganti kan udah ada di oldFIles.txt, nah file itu kita buat 
+sebagai argumen / input untuk script changeJane.py.
+
+Ya intinya bikin script buat ganti nama file.
+
+`1. Buat File changeJane.py`
+```bash
+nano changeJane.py
+```
+
+`2. Copy dan Paste Script changeJane.py`
+```python
+#!/usr/bin/env python3
+
+import os
+import sys
+
+def rename_files(filename):
+  dir="/home/student-01-bb62151xxxx"
+  with open(filename, 'r') as file:
+    for line in file:
+      old_file = dir + line.strip()
+      try:
+        if os.path.exists(old_file):
+          direc, name = os.path.split(old_file)
+          new_name = name.replace('jane', 'jdoe')
+          new_file = os.path.join(direc, new_name)
+          os.rename(old_file, new_file)
+          print("Renamed {} to {}".format(old_file,new_file))
+        else:
+          print("File {} 404".format(old_file))
+      except OSError as error:
+        print("Error {}: {}".format(old_file,error))
+
+if __name__ == '__main__':
+    filename = sys.argv[1]
+    rename_files(filename)
+```
+**Jangan lupa ganti string dir sesuai path absolute linux kalian (bisa pakai command pwd buat cari tahu)**.
+
+Setelah itu keluar dari nano dengan klik ctrl + o, Enter, dan ctrl + x
+
+Penjelasan singkat dari script itu adalah : 
+
+Script ini gunanya untuk mengubah nama file-file dalam suatu direktori. Dengan step sbb: 
+1. Baca daftar file dari oldFiles.txt.
+2. Pisahkan path dan nama file ke variabel **direc** dan **name**.
+3. Ganti jane di variabel name ke jdoe dan simpan nama file bari ke variabel new_file.
+4. Update path nya dengan menggabungkan direc + new_file.
+5. Terakhir tinggal rename filenya.
+
+`3. Update Security`
+```bash
+chmod +x changeJane.py
+```
+
+`4. Run Script`
+```bash
+./changeJane.py oldFiles.txt
+```
+![render-blocking-css](/static/images/blog-bangkit-satu/2.png)
+<div style={{ textAlign: 'center', marginTop: '-16px' }}>
+  <small>Checkpoint 2</small>
+</div>
+<br />
+
+Nahhh, kalau tampilan kalian sudah begini, coba cek checkpoint 2 di qwiklabs nya.
+
+## References
+
+- [Coursera](https://www.coursera.org/learn/python-operating-system/ungradedLti/Vu9Jk/qwiklabs-assessment-edit-files-using-substrings)
+
+Happy DLearn-ing! <Twemoji emoji="clinking-beer-mugs" />

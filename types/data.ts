@@ -11,7 +11,7 @@ export interface Project {
 }
 
 export interface Project_g {
-  type: 'work' | 'self' | 'indonesia'
+  type: 'work' | 'self' | 'indonesia' | 'colab'
   title: string
   description?: string
   imgSrc: string

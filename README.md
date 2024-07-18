@@ -17,6 +17,8 @@ My personal over-engineering site on the cloud.
 
 \+ flag indonesia
 
+\+ dashboard
+
 </details>
 
 
@@ -68,7 +70,7 @@ Open <b>public\locales\en\common.json</b>, just look at whats inside, you will k
 <details>
 <summary><b>How to config the website?</b></summary>
 <br>
-Open <b>data\siteMetadata.ts</b>b>, just look at whats inside, you will know what to do.
+Open <b>data\siteMetadata.ts</b>, just look at whats inside, you will know what to do.
 </br>
 </details>
 
@@ -170,4 +172,4 @@ Open <b>data\en\projectsData.ts</b>, just look at whats inside, you will know wh
 
 If you have any question, feel free to email me at <a href="mailto:shizuka0@proton.me">Shizuka</a>
 
-Copyright (c) 2023 Shizuka - Alrights reserved.
+Copyright (c) 2024 Shizuka - Alrights reserved.
