@@ -5,9 +5,9 @@ My personal over-engineering site on the cloud.
 <details>
 <summary><b>Changes from parent project</b></summary>
   
-\+ gallery
+\+ data science
 
-\+ add places to your gallery category, like Indonesia, beach or something. up to you
+\+ add category to data science section loke jupyter and dashoard and more. up to you
 
 \- snippets
 
