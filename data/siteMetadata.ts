@@ -4,7 +4,7 @@ export let siteMetadata = {
   siteLogo: '/static/images/logo.jpg',
   image: '/static/images/logo.jpg',
   socialBanner: '/static/images/socialBannerNew.png',
-  email: 'shizuka0@proton.me',
+  email: 'yosiabsn@gmail.com',
   github: 'https://github.com/Shizu-ka',
   x: 'https://instagram.com/yosiatp_',
   facebook: 'https://facebook.com/elonmusk',
