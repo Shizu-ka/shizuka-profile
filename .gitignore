@@ -41,8 +41,8 @@ yarn-error.log*
 .env
 
 tsconfig.tsbuildinfo
-data/en/authors/defaultBackup.txt
-package-lock.json
-package-lock.json
-package.json
-package-lock.json
+
+.contentlayer
+.eslintcache
+public/search.json
+scripts/imdb-movies.csv
