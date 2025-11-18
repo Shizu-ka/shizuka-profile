@@ -80,9 +80,6 @@
     "unified": "^11.0.4",
     "unist-util-visit": "^5.0.0"
   },
-    "engines": {
-    "node": "22.x"
-  },
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": [
       "eslint --fix"
