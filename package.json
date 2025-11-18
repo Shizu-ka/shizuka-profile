@@ -3,7 +3,7 @@
   "scripts": {
     "start": "PORT=3434 next-remote-watch ./data",
     "dev": "PORT=3434 next dev",
-    "postinstall": "prisma generate",
+    "postinstall": "prisma generate && npm rebuild esbuild",
     "build": "next build && tsx ./scripts/generate-sitemap",
     "serve": "PORT=3435 next start",
     "analyze": "cross-env ANALYZE=true next build",
@@ -92,7 +92,6 @@
     ]
   },
   "optionalDependencies": {
-    "@esbuild/linux-x64": "^0.20.2",
-    "esbuild-linux-64": "^0.15.18"
+    "@esbuild/linux-x64": "^0.20.2"
   }
 }
